@@ -15,8 +15,9 @@ import com.mmustafa.northwind.core.utilities.results.SuccessDataResult;
 import com.mmustafa.northwind.dataAccess.abstracts.ProductDao;
 
 import com.mmustafa.northwind.entities.concretes.Product;
+import com.mmustafa.northwind.entities.dtos.ProductWithCategoryDto;
 
-import net.bytebuddy.asm.Advice.This;
+
 
 @Service
 public class ProductManager implements ProductService{
@@ -107,6 +108,13 @@ public class ProductManager implements ProductService{
 	public DataResult<List<Product>> getAllSorted() {
 		Sort sort = Sort.by(Sort.Direction.DESC ,"productName");
 		return new SuccessDataResult<List<Product>>(this.productDao.findAll(sort));
+	}
+
+
+	@Override
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+		
+		return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails());
 	}
 
 }

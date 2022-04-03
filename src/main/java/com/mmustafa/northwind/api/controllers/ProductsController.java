@@ -14,6 +14,7 @@ import com.mmustafa.northwind.business.abstracts.ProductService;
 import com.mmustafa.northwind.core.utilities.results.DataResult;
 import com.mmustafa.northwind.core.utilities.results.Result;
 import com.mmustafa.northwind.entities.concretes.Product;
+import com.mmustafa.northwind.entities.dtos.ProductWithCategoryDto;
 
 @RestControllerAdvice
 @RequestMapping("/api/products")
@@ -65,6 +66,11 @@ public class ProductsController {
 	@GetMapping("/getAllSorted")
 	public DataResult<List<Product>> getAllSorted() {
 		return this.productService.getAllSorted();
+	}
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+		return this.productService.getProductWithCategoryDetails();
 	}
 	
 
